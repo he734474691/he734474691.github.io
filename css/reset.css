@@ -46,3 +46,65 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+/* 通用 */
+.w{
+  width: 1200px;
+  margin: auto;
+}
+.clearfix:before,.clearfix:after{
+  content:"";
+  display:table;
+  clear:both;
+}
+
+/* header */
+#header{
+  width: 100%;
+  height: 50px;
+  background-color: #e0e0e0;
+}
+
+/* nav */
+#nav{
+  margin-top: 100px;
+}
+#nav #logo{
+  float: left;
+  width: 250px;
+  height: 125px;
+  margin-left: 60px;
+}
+#nav .nav{
+  float: right;
+}
+#nav .nav li{
+  float: left;
+  margin-top: 40px;
+}
+#nav .nav li a{
+  color: #666666;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "幼圆";
+  padding: 50px 20px;
+}
+#nav .navline{
+  width: 40px;
+  height: 2px;
+  background-color: #666666;
+  margin: auto;
+  margin-top: 10px;
+  display: none;
+
+}
+#nav .nav li:hover .navline{
+  display: block;
+}
+#nav .line{
+  width: 100%;
+  height: 2px;
+  background-color: #666666;
+  margin-bottom: 50px;
+}
