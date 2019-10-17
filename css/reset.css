@@ -47,10 +47,25 @@ table {
   border-spacing: 0;
 }
 
-/* 通用 */
+/************************ 通用 **********************/
+body{
+  background-image: url(../img/background.jpg);
+  background-position: 10px 100px;
+  background-attachment:fixed;
+  width: 100%;
+  height: 100%;
+}
+#back{
+  width: 1200px;
+  margin: auto;
+  background-color: rgb(240, 240, 240);
+  height: 1000px;
+  border-radius:8px;
+}
 .w{
   width: 1200px;
   margin: auto;
+ 
 }
 .clearfix:before,.clearfix:after{
   content:"";
@@ -63,11 +78,35 @@ table {
   width: 100%;
   height: 50px;
   background-color: #e0e0e0;
+  position: fixed;
+  top: 0;
+}
+#header #date{
+  font-size: 16px;
+  color: #3b3b3b;
+  display: block;
+  padding: 15px 0 0 100px;
+  width: 500px;
+  float: left;
+}
+#header #log {
+  width: 50px;
+  font-size: 16px;
+  color: #3b3b3b;
+  display: block;
+  padding: 15px 100px 0 0;
+  float: right;
+  
+}
+#header #log a{
+  color: #3b3b3b;
+  text-decoration: none;
 }
 
 /* nav */
 #nav{
-  margin-top: 100px;
+  padding-top: 60px;
+  margin-top: 60px;
 }
 #nav #logo{
   float: left;
@@ -103,7 +142,8 @@ table {
   display: block;
 }
 #nav .line{
-  width: 100%;
+  width: 1100px;
+  margin: auto;
   height: 2px;
   background-color: #666666;
   margin-bottom: 50px;

@@ -9,54 +9,91 @@
     <link rel="icon" href="img/title.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
-    
-</head>
 
+</head>
+ <style>
+ #container{
+     width: 100px;
+     height: 100px;
+ }
+ </style>
 <body>
     <!-- header -->
     <div id="header">
-
-    </div>
-    <!-- nav -->
-    <div id="nav" class="w clearfix">
-        <div class="clearfix">
-            <div id="logo">
-                <img src="img/logo.png" alt="">
-            </div>
-            <div class="date"></div>
-            <div class="nav">
-                <ul>
-                    <li>
-                        <a href="index.html">首&nbsp;&nbsp;页</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="dontknow.html">不懂的知识</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="sofeware.html">软&nbsp;&nbsp;件</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="#">视&nbsp;&nbsp;频</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li style="margin-right: 60px;">
-                        <a href="#">图&nbsp;&nbsp;片</a>
-                        <div class="navline"></div>
-                    </li>
-                </ul>
-            </div>
+        <div class="w  clearfix">
+            <div id="date"></div>
+            <div id="log"><a href="#"><span>登录</span></a></div>
         </div>
-        <div class="line"></div>
     </div>
+    <div id="back">
+        <!-- nav -->
+        <div id="nav" class="w clearfix">
+            <div class="clearfix">
+                <div id="logo">
+                    <img src="img/logo.png" alt="">
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="index.html">首&nbsp;&nbsp;页</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="dontknow.html">不懂的知识</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="sofeware.html">软&nbsp;&nbsp;件</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="#">视&nbsp;&nbsp;频</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li style="margin-right: 60px;">
+                            <a href="#">图&nbsp;&nbsp;片</a>
+                            <div class="navline"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div id="container"></div> 
 
 </body>
-<script src="js/index.js">
+<script>
+    //头部时间
+    var oSpan = document.createElement('span');
+    var date = document.getElementById('date');
+    var aa = date.appendChild(oSpan);
+    var time = function () {
+        var myDate = new Date();
+        var y = myDate.getFullYear();
+        var m = myDate.getMonth() + 1;
+        var d = myDate.getDate();
+        var h = myDate.getHours();
+        var minu = myDate.getMinutes();
+        var s = myDate.getSeconds();
+        oSpan.innerHTML = y + '/' + m + '/' + d + '/' + h + ':' + towNum(minu) + ':' + towNum(s);
+    }
+    function towNum(n) {
+        return n > 9 ? n : '0' + n;
+    }
+    time();
+    setInterval(time, 1000);
+    //地理位置
+    var map = new BMap.Map("container");
+    // 创建地图实例  
+    var point = new BMap.Point(116.404, 39.915);
+    // 创建点坐标  
+    map.centerAndZoom(point, 15);
+// 初始化地图，设置中心点坐标和地图级别
 </script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=AZ1nBCMKxKOM3xxMvYlcgSGtcXScvoUb"></script>
 </html>
