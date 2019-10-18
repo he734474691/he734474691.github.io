@@ -105,179 +105,29 @@
     var point = new BMap.Point(116.404, 39.915);
     // 创建点坐标  
     map.centerAndZoom(point, 15);
-    // 初始化地图，设置中心点坐标和地图级别
-    $(function () {
-        initMap();
 
-        $(".sign").click(function () {
-            getTSDistance();
-        });
 
-        $(".relocate").click(function () {
-            relocate();
-        });
+
+    //初始化地图
+    var map = new BMap.Map('container', {
+      resizeEnable: true, //是否监控地图容器尺寸变化
+      zoom: 11, //初始地图级别
     });
-    var map = "";
-    function initMap() {
 
-        //初始化地图
-        map = new BMap.Map("container");
-        var point = new BMap.Point(120.38442818, 36.1052149);
-        map.centerAndZoom(point, 15);
-
-        //这段代码可以控制地图在浏览器或者安卓手机下也能够精准定位到当前所在位置
-        //前提是使用https协议的网站
-        var navigationControl = new BMap.NavigationControl({
-            type: BMAP_NAVIGATION_CONTROL_LARGE,
-            enableGeolocation: true
+    //获取并展示当前城市信息
+    function logMapinfo(){
+      map.getCity( function(info){
+        var node = new PrettyJSON.view.Node({
+            el: document.querySelector("#map-city"),
+            data: info
         });
-        map.addControl(navigationControl);
-
-
-
-        //定位到当前地址
-        var geolocation = new BMap.Geolocation();
-        geolocation.getCurrentPosition(function (r) {
-            showLocationInMap(this.getStatus(), r);
-        }, { enableHighAccuracy: true })
-    }
-    //地图展示当前位置
-    var accuracy = "";
-    var longitude = "";
-    var latitude = "";
-    var actual_address = "";
-    function showLocationInMap(status, r) {
-
-        if (status == BMAP_STATUS_SUCCESS) {//检索成功。对应数值“0”。
-            var mk = new BMap.Marker(r.point);
-            map.addOverlay(mk);
-            map.panTo(r.point);
-
-            //console.log(r.accuracy);
-            //console.log(r.point.lng);
-            //console.log(r.point.lat);
-            accuracy = r.accuracy;
-            longitude = r.point.lng;
-            latitude = r.point.lat;
-
-
-            //用所定位的经纬度查找所在地省市街道等信息
-            var point = new BMap.Point(r.point.lng, r.point.lat);
-            var gc = new BMap.Geocoder();
-            gc.getLocation(point, function (rs) {
-                var addComp = rs.addressComponents;
-                //console.log(rs.address);//地址信息
-                actual_address = rs.address;
-                var address = new BMap.Label(rs.address, { offset: new BMap.Size(-80, -25) });
-                mk.setLabel(address); //添加地址标注
-            });
-
-        } else if (status == BMAP_STATUS_CITY_LIST) {//城市列表。对应数值“1”。
-            common.alertMsg("城市列表", 0);
-        } else if (status == BMAP_STATUS_UNKNOWN_LOCATION) {//位置结果未知。对应数值“2”。
-            common.alertMsg("位置结果未知", 0);
-        } else if (status == BMAP_STATUS_UNKNOWN_ROUTE) {//导航结果未知。对应数值“3”。
-            common.alertMsg("导航结果未知", 0);
-        } else if (status == BMAP_STATUS_INVALID_KEY) {//非法密钥。对应数值“4”。
-            common.alertMsg("非法密钥", 0);
-        } else if (status == BMAP_STATUS_INVALID_REQUEST) {//非法请求。对应数值“5”。
-            common.alertMsg("非法请求", 0);
-        } else if (status == BMAP_STATUS_PERMISSION_DENIED) {//没有权限。对应数值“6”。(自 1.1 新增)
-            common.alertMsg("没有权限", 0);
-        } else if (status == BMAP_STATUS_SERVICE_UNAVAILABLE) { //服务不可用。对应数值“7”。(自 1.1 新增)
-            common.alertMsg("服务不可用", 0);
-        } else if (status == BMAP_STATUS_TIMEOUT) {//超时。对应数值“8”。(自 1.1 新增)
-            common.alertMsg("超时", 0);
-        } else {
-            common.alertMsg("未知错误", 0);
-        }
-    }
-    /**
-     * 点击签到，先获取老师和目前定位地址的距离
-     */
-    var distance = 0;
-    function getTSDistance() {
-
-        $.ajax({
-            type: "POST",
-            url: rootPath + "/attendance/getAttendanceByAuId",
-            data: {
-                'att_user_id': att_user_id
-            },
-            dataType: "json",
-            success: function (data) {
-                console.log(data);
-                if (data.isSuccess) {
-
-                    var tec_longitude = data.attendance.longitude;
-                    var tec_latitude = data.attendance.latitude;
-
-                    var pointTeacher = new BMap.Point(tec_longitude, tec_latitude);
-                    var pointStudent = new BMap.Point(longitude, latitude);
-                    distance = (map.getDistance(pointTeacher, pointStudent)).toFixed(2);
-
-                    //执行签到
-                    sign();
-                }
-                else {
-                    common.alertMsg(data.msgCode, 0);
-                }
-            }
-        });
-
-
+      });
     }
 
-    /**
-     * 签到
-     */
-    function sign() {
-        common.alertMsg("正在签到，请稍候...", 0);
+    logMapinfo();
 
-        console.log(accuracy)
-        console.log(longitude)
-        console.log(latitude)
-        console.log(actual_address)
-        console.log(distance)
-
-        $.ajax({
-            type: "POST",
-            url: rootPath + "/attendance/gpsSignIn",
-            data: {
-                'att_user_id': att_user_id,
-                'accuracy': accuracy,
-                'longitude': longitude,
-                'latitude': latitude,
-                'address': actual_address,
-                'distance': distance
-            },
-            dataType: "json",
-            success: function (data) {
-                //console.log(data);
-                if (data.isSuccess) {
-                    common.alertMsg("签到成功，3秒后跳到列表页", 0);
-                    setTimeout(rec_list, 3000);
-                }
-                else {
-                    common.alertMsg(data.msgCode, 0);
-                }
-            }
-        });
-    }
-
-    /**
-     * 重新定位
-     */
-    function relocate() {
-        common.alertMsg("正在重新定位，请稍候...", 0);
-        //定位到当前地址
-        var geolocation = new BMap.Geolocation();
-        geolocation.getCurrentPosition(function (r) {
-            showLocationInMap(this.getStatus(), r);
-        }, { enableHighAccuracy: true })
-        common.alertMsg("定位成功", 0);
-    }
-
+    //绑定地图移动事件
+    map.on('moveend', logMapinfo);
 </script>
 
 <script type="text/javascript"
