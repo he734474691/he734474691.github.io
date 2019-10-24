@@ -18,51 +18,54 @@
 
         html,
         body {
-            height: 100%;
+            width: 100%;
         }
 
         .w {
-            width: 1200px;
-            height: 100%;
+            width: 80%;
             margin: auto;
         }
 
         .register {
-            width: 400px;
-            height: 500px;
-            float: right;
-            margin-top: 80px;
-            padding: 100px;
-        }
+            width: 80%;
+            /* margin-top: 8rem; */
+            position: absolute;
+            top: 12%;
 
-        .clearfix:before,
-        .clearfix:after {
-            content: "";
-            display: table;
-            clear: both;
         }
 
         span {
-            width: 120px;
             display: inline-block;
+            width: 8rem;
+            height: 2rem;
             text-align: center;
-            font-size: 24px;
-        }
-
-        input {
-            width: 200px;
-            height: 26px;
-            font-size: 20px;
-        }
-
-        #login {
-            width: 100px;
-            margin-left: 120px;
-            height: 35px;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .input div {
-            margin-top: 30px;
+            margin-top: 2rem;
+        }
+
+        .input {
+            width: 100%;
+            margin: auto;
+        }
+
+        .input input {
+            height: 2rem;
+            width: 100%;
+        }
+
+        input {
+            font-size: 1.5rem;
+        }
+
+        #login {
+            display: block;
+            width: 4rem;
+            height: 2rem;
+            margin: auto;
         }
     </style>
 </head>
@@ -213,7 +216,7 @@
         localStorage.setItem("compellacion_1", compellation.value);
         localStorage.setItem("idcard_1", idcard.value);
         localStorage.setItem("prl_1", prl.value);
-        javascrtpt: window.location.href = 'aisle.html'
+        javascrtpt: window.location.href = 'aislemob.html'
     }
     function numb() {
         EventUtil.addHandler(prl, "input", function (event) {
@@ -248,6 +251,5 @@
 
 
 </script>
-<!-- <script src="aisle.js"></script> -->
 
 </html>
