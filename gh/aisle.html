@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .w {
+            width: 1200px;
+            height: 100%;
+            margin: auto;
+        }
+
+        .box1 {
+            width: 800px;
+            height: 405px;
+            margin: auto;
+            margin-top: 100px;
+            border: 1px solid black;
+        }
+
+        #compellation_1 {
+            height: 100px;
+
+        }
+
+        .left {
+            display: block;
+            width: 250px;
+            /* height: 100px; */
+            text-align: center;
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+
+        }
+
+        #idcard_1,
+        #prl_1,
+        #date {
+            width: 550px;
+            float: right;
+            height: 100px;
+            border-top: 1px solid black;
+
+        }
+
+        span {
+            display: block;
+            text-align: center;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+
+        <div class="box1 clearfix">
+            <div id="compellation_1"></div>
+            <div class="box2">
+                <div id="idcard_1"></div><span class="left ">证件号码</span>
+            </div>
+            <div class="box2">
+                <div id="prl_1"></div> <span class="left">保留额度</span>
+            </div>
+            <div class="box2">
+                <div id="date"></div> <span class="left">保留时间</span>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script>
+
+    var com = document.getElementById("compellation_1");
+    var id = document.getElementById("idcard_1");
+    var p = document.getElementById("prl_1");
+
+    var co_1 = document.createElement("span");
+    var co_2 = document.createElement("span");
+    var co_3 = document.createElement("span");
+    var aa = com.appendChild(co_1);
+    var bb = id.appendChild(co_2);
+    var cc = p.appendChild(co_3);
+
+    co_1.innerHTML = localStorage.getItem("compellacion_1");
+    var asterisk = localStorage.getItem("idcard_1");
+    co_2.innerHTML = asterisk.substring(0,4)+"**********"+asterisk.substr(14,17);
+    co_3.innerHTML = localStorage.getItem("prl_1") + ".00元";
+    var oSpan = document.createElement('span');
+    var date = document.getElementById('date');
+    var aa = date.appendChild(oSpan);
+    var time = function () {
+        var myDate = new Date();
+        var y = myDate.getFullYear();
+        var m = myDate.getMonth() + 1;
+        var d = myDate.getDate();
+        oSpan.innerHTML = y + '年' + m + '月' + d + '日';
+    }
+    time();
+
+</script>
+
+</html>
