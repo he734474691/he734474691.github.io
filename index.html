@@ -1,99 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>坏网</title>
     <link rel="icon" href="img/title.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/index.css">
-
-</head>
-<style>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <style>
     #map {
-        width: 100px;
-        height: 100px;
+      width: 100px;
+      height: 100px;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <!-- header -->
     <div id="header">
-        <div class="w  clearfix">
-            <div id="date"></div>
-            <div id="log"><a href="#"><span>登录</span></a></div>
+      <div class="w  clearfix">
+        <div id="date"></div>
+        <div id="log">
+          <a href="#"><span>登录</span></a>
         </div>
+      </div>
     </div>
     <div id="back">
-        <!-- nav -->
-        <div id="nav" class="w clearfix">
-            <div class="clearfix">
-                <div id="logo">
-                    <img src="img/logo.png" alt="">
-                </div>
-                <div class="nav">
-                    <ul>
-                        <li>
-                            <a href="index.html">首&nbsp;&nbsp;页</a>
-                            <div class="navline"></div>
-                        </li>
-                        <li>
-                            <a href="dontknow.html">不懂的知识</a>
-                            <div class="navline"></div>
-                        </li>
-                        <li>
-                            <a href="sofeware.html">软&nbsp;&nbsp;件</a>
-                            <div class="navline"></div>
-                        </li>
-                        <li>
-                            <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
-                            <div class="navline"></div>
-                        </li>
-                        <li>
-                            <a href="#">视&nbsp;&nbsp;频</a>
-                            <div class="navline"></div>
-                        </li>
-                        <li style="margin-right: 60px;">
-                            <a href="#">图&nbsp;&nbsp;片</a>
-                            <div class="navline"></div>
-                        </li>
-                    </ul>        
-                </div>     
-            </div>
-            <div class="line"></div>
+      <!-- nav -->
+      <div id="nav" class="w clearfix">
+        <div class="clearfix">
+          <div id="logo">
+            <img src="img/logo.png" alt="" />
+          </div>
+          <div class="nav">
+            <ul>
+              <li>
+                <a href="index.html">首&nbsp;&nbsp;页</a>
+                <div class="navline"></div>
+              </li>
+              <li>
+                <a href="dontknow.html">不懂的知识</a>
+                <div class="navline"></div>
+              </li>
+              <li>
+                <a href="sofeware.html">软&nbsp;&nbsp;件</a>
+                <div class="navline"></div>
+              </li>
+              <li>
+                <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
+                <div class="navline"></div>
+              </li>
+              <li>
+                <a href="#">视&nbsp;&nbsp;频</a>
+                <div class="navline"></div>
+              </li>
+              <li style="margin-right: 60px;">
+                <a href="#">图&nbsp;&nbsp;片</a>
+                <div class="navline"></div>
+              </li>
+            </ul>
+          </div>
         </div>
-        <a href="gh/register.html">gh</a>
-        <a href="gh/registermob.html"></a>
+        <div class="line"></div>
+      </div>
+      <a href="gh/register.html">gh</a>
+      <a href="gh/registermob.html"></a>
     </div>
 
     <div id="allmap"></div>
-
-</body>
-<script type="text/javascript"
-    src="http://api.map.baidu.com/getscript?v=3.0&ak=AZ1nBCMKxKOM3xxMvYlcgSGtcXScvoUb"></script>
-<script>
+  </body>
+  <script
+    type="text/javascript"
+    src="http://api.map.baidu.com/getscript?v=3.0&ak=AZ1nBCMKxKOM3xxMvYlcgSGtcXScvoUb"
+  ></script>
+  <script>
     //头部时间
-    var oSpan = document.createElement('span');
-    var date = document.getElementById('date');
+    var oSpan = document.createElement("span");
+    var date = document.getElementById("date");
     var aa = date.appendChild(oSpan);
-    var time = function () {
-        var myDate = new Date();
-        var y = myDate.getFullYear();
-        var m = myDate.getMonth() + 1;
-        var d = myDate.getDate();
-        var h = myDate.getHours();
-        var minu = myDate.getMinutes();
-        var s = myDate.getSeconds();
-        oSpan.innerHTML = y + '/' + m + '/' + d + '/' + h + ':' + towNum(minu) + ':' + towNum(s);
-    }
+    var time = function() {
+      var myDate = new Date();
+      var y = myDate.getFullYear();
+      var m = myDate.getMonth() + 1;
+      var d = myDate.getDate();
+      var h = myDate.getHours();
+      var minu = myDate.getMinutes();
+      var s = myDate.getSeconds();
+      oSpan.innerHTML =
+        y + "/" + m + "/" + d + "/" + h + ":" + towNum(minu) + ":" + towNum(s);
+    };
     function towNum(n) {
-        return n > 9 ? n : '0' + n;
+      return n > 9 ? n : "0" + n;
     }
     time();
     setInterval(time, 1000);
-
 
     //地理位置
     var map = new BMap.Map("allmap");
@@ -101,22 +102,34 @@
     map.centerAndZoom(point, 14);
 
     var geolocation = new BMap.Geolocation();
-    geolocation.getCurrentPosition(function (r) {
-        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-            var mk = new BMap.Marker(r.point);
-            map.addOverlay(mk);
-            map.panTo(r.point);
-            alert('您的位置：' + r.point.lng + ',' + r.point.lat);
-        }
-        else {
-            alert('failed' + this.getStatus());
-        }
+    geolocation.getCurrentPosition(function(r) {
+      if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+        var mk = new BMap.Marker(r.point);
+        map.addOverlay(mk);
+        map.panTo(r.point);
+        var map = new BMap.Map("l-map");
+        map.centerAndZoom(new BMap.Point( r.point.lng, r.point.lat), 11);
+        // 创建地理编码实例
+        var myGeo = new BMap.Geocoder();
+        // 根据坐标得到地址描述
+        myGeo.getLocation(new BMap.Point( r.point.lng, r.point.lat), function(result) {
+          if (result) {
+            alert(result.address);
+          }
+        });
+        alert("您的位置：" +r.point.lng + "," + r.point.lat +"," );
+      } else {
+        alert("failed" + this.getStatus());
+      }
     });
-</script>
+  </script>
 
-<script type="text/javascript"
-    src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
-<script type="text/javascript"
-    src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
-
+  <script
+    type="text/javascript"
+    src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"
+  ></script>
 </html>
