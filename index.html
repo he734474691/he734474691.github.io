@@ -103,17 +103,16 @@
     var myGeo = new BMap.Geocoder();
     var geolocation = new BMap.Geolocation();
 
-    myGeo.getLocation(new BMap.Point(116.364, 39.993), function(result) {
-      if (result) {
-        alert(result.address);
-      }
-    });
-
     geolocation.getCurrentPosition(function(r) {
       if (this.getStatus() == BMAP_STATUS_SUCCESS) {
         var mk = new BMap.Marker(r.point);
         map.addOverlay(mk);
         map.panTo(r.point);
+        myGeo.getLocation(point, function(result) {
+          if (result) {
+            alert(result.address);
+          }
+        });
 
         alert("您的位置：" + r.point.lng + "," + r.point.lat);
       } else {
