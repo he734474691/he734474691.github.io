@@ -108,7 +108,7 @@
         var mk = new BMap.Marker(r.point);
         map.addOverlay(mk);
         map.panTo(r.point);
-        myGeo.getLocation(point, function(result) {
+        myGeo.getLocation(mk, function(result) {
           if (result) {
             alert(result.address);
           }
