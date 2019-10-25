@@ -45,23 +45,30 @@
       .input {
         width: 100%;
         margin: auto;
+        
       }
 
       .input input {
         height: 2rem;
         width: 100%;
+        border: 0.05rem solid rgb(151, 145, 145);
       }
 
       input {
         font-size: 1.5rem;
+        padding-left: 0.4rem;
+        padding-top: 0.02rem;
+
       }
 
       #login {
         display: block;
-        width: 4rem;
-        height: 2rem;
+        width: 4.5rem;
+        height: 2.5rem;
         margin: auto;
+        padding: 0;
       }
+      
     </style>
   </head>
 
@@ -70,11 +77,10 @@
       <div class="register">
         <div class="input  clearfix">
           <div>
-            <span>姓 名 ：</span><input type="text" id="compellation" />
+            <span>姓 名 ：</span><input type="text" id="compellation"  />
           </div>
           <div>
-            <span>证件号码：</span
-            ><input type="text" id="idcard" maxlength="18" /><br />
+            <span>证件号码：</span><input type="text" id="idcard" maxlength="18"/><br />
           </div>
           <div>
             <span>预审额度：</span><input type="text" number id="prl" /><br />
