@@ -89,6 +89,13 @@ body{
   width: 500px;
   float: left;
 }
+#header #place {
+  font-size: 16px;
+  color: #3b3b3b;
+  display: block;
+  padding: 15px 0 0 100px;
+  width: 500px;
+}
 #header #log {
   width: 50px;
   font-size: 16px;
