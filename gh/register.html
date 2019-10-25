@@ -1,95 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <script>
-        window.location.href = /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent) ? "http://breakweb.top/gh/register.html" : "http://breakweb.top/gh/registermob.html";
 
-    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-        html,
-        body {
-            height: 100%;
-        }
+      html,
+      body {
+        height: 100%;
+      }
 
-        .w {
-            width: 1200px;
-            height: 100%;
-            margin: auto;
-        }
+      .w {
+        width: 1200px;
+        height: 100%;
+        margin: auto;
+      }
 
-        .register {
-            width: 400px;
-            height: 500px;
-            float: right;
-            margin-top: 80px;
-            padding: 100px;
-        }
+      .register {
+        width: 400px;
+        height: 500px;
+        float: right;
+        margin-top: 80px;
+        padding: 100px;
+      }
 
-        .clearfix:before,
-        .clearfix:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+      .clearfix:before,
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
 
-        span {
-            width: 120px;
-            display: inline-block;
-            text-align: center;
-            font-size: 24px;
-        }
+      span {
+        width: 120px;
+        display: inline-block;
+        text-align: center;
+        font-size: 24px;
+      }
 
-        input {
-            width: 200px;
-            height: 26px;
-            font-size: 20px;
-        }
+      input {
+        width: 200px;
+        height: 26px;
+        font-size: 20px;
+      }
 
-        #login {
-            width: 100px;
-            margin-left: 120px;
-            height: 35px;
-        }
+      #login {
+        width: 100px;
+        margin-left: 120px;
+        height: 35px;
+      }
 
-        .input div {
-            margin-top: 30px;
-        }
+      .input div {
+        margin-top: 30px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="w">
-        <div class="register">
-            <div class="input  clearfix">
-
-                <div>
-                    <span>姓 名 ：</span><input type="text" id="compellation">
-                </div>
-                <div>
-                    <span>证件号码：</span><input type="text" id="idcard" maxlength="18"><br>
-                </div>
-                <div>
-                    <span>预审额度：</span><input type="text" number id="prl"><br>
-                </div>
-                <div>
-                    <input type="button" value="登录" id="login" onclick="log()">
-                </div>
-            </div>
+      <div class="register">
+        <div class="input  clearfix">
+          <div>
+            <span>姓 名 ：</span><input type="text" id="compellation" />
+          </div>
+          <div>
+            <span>证件号码：</span
+            ><input type="text" id="idcard" maxlength="18" /><br />
+          </div>
+          <div>
+            <span>预审额度：</span><input type="text" number id="prl" /><br />
+          </div>
+          <div>
+            <input type="button" value="登录" id="login" onclick="log()" />
+          </div>
         </div>
-
+      </div>
     </div>
-</body>
-<script>
+  </body>
+  <script>
     var compellation = document.getElementById("compellation");
     var idcard = document.getElementById("idcard");
     var prl = document.getElementById("prl");
@@ -97,157 +92,187 @@
     var compellation_1, idcard_1, prl_1;
 
     var EventUtil = {
+      addHandler: function(element, type, handler) {
+        //添加事件
+        if (element.addEventListener) {
+          element.addEventListener(type, handler, false); //使用DOM2级方法添加事件
+        } else if (element.attachEvent) {
+          //使用IE方法添加事件
+          element.attachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = handler; //使用DOM0级方法添加事件
+        }
+      },
 
-        addHandler: function (element, type, handler) { //添加事件
-            if (element.addEventListener) {
-                element.addEventListener(type, handler, false);  //使用DOM2级方法添加事件
-            } else if (element.attachEvent) {                    //使用IE方法添加事件
-                element.attachEvent("on" + type, handler);
-            } else {
-                element["on" + type] = handler;          //使用DOM0级方法添加事件
-            }
-        },
+      removeHandler: function(element, type, handler) {
+        //取消事件
+        if (element.removeEventListener) {
+          element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent) {
+          element.detachEvent("on" + type, handler);
+        } else {
+          element["on" + type] = null;
+        }
+      },
 
-        removeHandler: function (element, type, handler) {  //取消事件
-            if (element.removeEventListener) {
-                element.removeEventListener(type, handler, false);
-            } else if (element.detachEvent) {
-                element.detachEvent("on" + type, handler);
-            } else {
-                element["on" + type] = null;
-            }
-        },
+      getEvent: function(event) {
+        //使用这个方法跨浏览器取得event对象
+        return event ? event : window.event;
+      },
 
-        getEvent: function (event) {  //使用这个方法跨浏览器取得event对象
-            return event ? event : window.event;
-        },
+      getTarget: function(event) {
+        //返回事件的实际目标
+        return event.target || event.srcElement;
+      },
 
-        getTarget: function (event) {  //返回事件的实际目标
-            return event.target || event.srcElement;
-        },
+      preventDefault: function(event) {
+        //阻止事件的默认行为
+        if (event.preventDefault) {
+          event.preventDefault();
+        } else {
+          event.returnValue = false;
+        }
+      },
 
-        preventDefault: function (event) {   //阻止事件的默认行为
-            if (event.preventDefault) {
-                event.preventDefault();
-            } else {
-                event.returnValue = false;
-            }
-        },
+      stopPropagation: function(event) {
+        //立即停止事件在DOM中的传播
+        //避免触发注册在document.body上面的事件处理程序
+        if (event.stopPropagation) {
+          event.stopPropagation();
+        } else {
+          event.cancelBubble = true;
+        }
+      },
 
-        stopPropagation: function (event) {  //立即停止事件在DOM中的传播
-            //避免触发注册在document.body上面的事件处理程序
-            if (event.stopPropagation) {
-                event.stopPropagation();
-            } else {
-                event.cancelBubble = true;
-            }
-        },
+      getRelatedTarget: function(event) {
+        //获取mouseover和mouseout相关元素
+        if (event.relatedTarget) {
+          return event.relatedTarget;
+        } else if (event.toElement) {
+          //兼容IE8-
+          return event.toElement;
+        } else if (event.formElement) {
+          return event.formElement;
+        } else {
+          return null;
+        }
+      },
 
-        getRelatedTarget: function (event) {  //获取mouseover和mouseout相关元素
-            if (event.relatedTarget) {
-                return event.relatedTarget;
-            } else if (event.toElement) {      //兼容IE8-
-                return event.toElement;
-            } else if (event.formElement) {
-                return event.formElement;
-            } else {
-                return null;
-            }
-        },
+      getButton: function(event) {
+        //获取mousedown或mouseup按下或释放的按钮是鼠标中的哪一个
+        if (document.implementation.hasFeature("MouseEvents", "2.0")) {
+          return event.button;
+        } else {
+          switch (
+            event.button //将IE模型下的button属性映射为DOM模型下的button属性
+          ) {
+            case 0:
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+              return 0; //按下的是鼠标主按钮（一般是左键）
+            case 2:
+            case 6:
+              return 2; //按下的是中间的鼠标按钮
+            case 4:
+              return 1; //鼠标次按钮（一般是右键）
+          }
+        }
+      },
 
-        getButton: function (event) {    //获取mousedown或mouseup按下或释放的按钮是鼠标中的哪一个
-            if (document.implementation.hasFeature("MouseEvents", "2.0")) {
-                return event.button;
-            } else {
-                switch (event.button) {   //将IE模型下的button属性映射为DOM模型下的button属性
-                    case 0:
-                    case 1:
-                    case 3:
-                    case 5:
-                    case 7:
-                        return 0;  //按下的是鼠标主按钮（一般是左键）
-                    case 2:
-                    case 6:
-                        return 2;  //按下的是中间的鼠标按钮
-                    case 4:
-                        return 1;  //鼠标次按钮（一般是右键）
-                }
-            }
-        },
+      getWheelDelta: function(event) {
+        //获取表示鼠标滚轮滚动方向的数值
+        if (event.wheelDelta) {
+          return event.wheelDelta;
+        } else {
+          return -event.detail * 40;
+        }
+      },
 
-        getWheelDelta: function (event) { //获取表示鼠标滚轮滚动方向的数值
-            if (event.wheelDelta) {
-                return event.wheelDelta;
-            } else {
-                return -event.detail * 40;
-            }
-        },
+      getCharCode: function(event) {
+        //以跨浏览器取得相同的字符编码，需在keypress事件中使用
+        if (typeof event.charCode == "number") {
+          return event.charCode;
+        } else {
+          return event.keyCode;
+        }
+      },
 
-        getCharCode: function (event) {   //以跨浏览器取得相同的字符编码，需在keypress事件中使用
-            if (typeof event.charCode == "number") {
-                return event.charCode;
-            } else {
-                return event.keyCode;
-            }
-        },
+      getClipboardText: function(event) {
+        //操作剪切板
+        var clipboardData = event.clipboardData || window.clipboardData;
+        return clipboardData.getData("text");
+      },
 
-        getClipboardText: function (event) {  //操作剪切板
-            var clipboardData = (event.clipboardData || window.clipboardData);
-            return clipboardData.getData("text");
-        },
-
-        setClipboardText: function (event, value) {
-            if (event.clipboardData) {
-                return event.clipboardData.setData("text/plain", value);
-            } else if (window.clipboardData) {
-                return window.clipboardData.setData("text", value);
-            }
-        },
-
-
-    }
-
-
+      setClipboardText: function(event, value) {
+        if (event.clipboardData) {
+          return event.clipboardData.setData("text/plain", value);
+        } else if (window.clipboardData) {
+          return window.clipboardData.setData("text", value);
+        }
+      }
+    };
 
     function log() {
-        localStorage.setItem("compellacion_1", compellation.value);
-        localStorage.setItem("idcard_1", idcard.value);
-        localStorage.setItem("prl_1", prl.value);
-        javascrtpt: window.location.href = 'aisle.html'
+      localStorage.setItem("compellacion_1", compellation.value);
+      localStorage.setItem("idcard_1", idcard.value);
+      localStorage.setItem("prl_1", prl.value);
+      javascrtpt: window.location.href = "aisle.html";
     }
     function numb() {
-        EventUtil.addHandler(prl, "input", function (event) {
-            event = EventUtil.getEvent(event);
-            var target = EventUtil.getEvent(event);
-            var charCode = EventUtil.getCharCode(event);
-            if (!/\d/.test(String.fromCharCode(charCode))) {
-                prl.value = prl.value.replace(/[\D]/g, '');
-                EventUtil.preventDefault(event);
-
-            }
-        });
-
-        var nu = function (event) {
-            event = EventUtil.getEvent(event);
-            var target = EventUtil.getEvent(event);
-            var charCode = EventUtil.getCharCode(event);
-            if (!(/[\d]/g).test(String.fromCharCode(charCode))) {
-                idcard.value = idcard.value.replace(/[\D]/g, '');
-                EventUtil.preventDefault(event);
-            }
-            if (idcard.value / 10e15 >= 10) {
-                EventUtil.removeHandler(idcard, "input", nu)
-            }
+      EventUtil.addHandler(prl, "input", function(event) {
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getEvent(event);
+        var charCode = EventUtil.getCharCode(event);
+        if (!/\d/.test(String.fromCharCode(charCode))) {
+          prl.value = prl.value.replace(/[\D]/g, "");
+          EventUtil.preventDefault(event);
         }
-        EventUtil.addHandler(idcard, "input", nu);
+      });
 
+      var nu = function(event) {
+        event = EventUtil.getEvent(event);
+        var target = EventUtil.getEvent(event);
+        var charCode = EventUtil.getCharCode(event);
+        if (!/[\d]/g.test(String.fromCharCode(charCode))) {
+          idcard.value = idcard.value.replace(/[\D]/g, "");
+          EventUtil.preventDefault(event);
+        }
+        if (idcard.value / 10e15 >= 10) {
+          EventUtil.removeHandler(idcard, "input", nu);
+        }
+      };
+      EventUtil.addHandler(idcard, "input", nu);
     }
 
     numb();
+    
+    ("use strict");
 
+    //判断是手机重定向
+function browserRedirect() {
+	var sUserAgent = navigator.userAgent.toLowerCase();
+	var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+	var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+	var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+	var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+	var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+	var bIsAndroid = sUserAgent.match(/android/i) == "android";
+	var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+	var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
 
-
-</script>
-<!-- <script src="aisle.js"></script> -->
-
+	var url = document.location.toString();
+	var arrUrl = url.split("//");
+	var start = arrUrl[1].indexOf("/");
+	var relUrl = arrUrl[1].substring(start);//stop省略，截取从start开始到结尾的所有字符
+	//console.log(relUrl)
+	if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+		//跳转移动端页面
+		window.location.href = "http://breakweb.top/gh/registermob.html" + "";
+	}
+}
+browserRedirect();
+  </script>
+  <!-- <script src="aisle.js"></script> -->
 </html>
