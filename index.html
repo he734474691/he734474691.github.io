@@ -108,13 +108,13 @@
         var mk = new BMap.Marker(r.point);
         map.addOverlay(mk);
         map.panTo(r.point);
-        myGeo.getLocation(r.point , function(result) {
+        myGeo.getLocation(new BMap.Point(r.point.lng-0.0231511254,r.point.lat+0.0873886225) , function(result) {
           if (result) {
             alert(result.address);
           }
         });
 
-        alert("您的位置：" + r.point.lng-0.0231511254 + "," + r.point.lat+0.0873886225);
+        alert("您的位置：" + (r.point.lng-0.0231511254) + "," + (r.point.lat+0.0873886225));
       } else {
         alert("failed" + this.getStatus());
       }
