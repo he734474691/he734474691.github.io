@@ -93,8 +93,9 @@ body{
   color: #3b3b3b;
   display: block;
   padding: 15px;
-  width: 220px;
+  width: 260px;
 }
+
 #header #date ,#header #place{
   float: left;
 }
@@ -157,3 +158,22 @@ body{
   background-color: #666666;
   margin-bottom: 50px;
 }
+
+/* content */
+#content {
+  width: 1000px;
+  margin: auto;
+}
+
+/* project */
+#project{
+  width: 50px;
+  font-size: 24px;
+  color: #3b3b3b;
+  display: block;
+}
+
+#project a{
+    color: #3b3b3b;
+    text-decoration: none;
+  }
