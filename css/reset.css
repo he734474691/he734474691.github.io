@@ -85,16 +85,18 @@ body{
   font-size: 16px;
   color: #3b3b3b;
   display: block;
-  padding: 15px 0 0 100px;
-  width: 500px;
-  float: left;
+  padding: 15px;
+  width: 220px;
 }
 #header #place {
   font-size: 16px;
   color: #3b3b3b;
   display: block;
-  padding: 15px 0 0 100px;
-  width: 500px;
+  padding: 15px;
+  width: 220px;
+}
+#header #date ,#header #place{
+  float: left;
 }
 #header #log {
   width: 50px;
