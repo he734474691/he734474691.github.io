@@ -110,7 +110,7 @@
         map.panTo(r.point);
         myGeo.getLocation(new BMap.Point(r.point.lng-0.0171511254,r.point.lat+0.0933886225) , function(result) {
           if (result) {
-            alert(result.address.province+"/"+result.address.city+"/"+result.address.district  );
+            alert(result.addressComponents.province+"/"+result.addressComponents.city+"/"+result.addressComponents.district  );
           }
         });
 
