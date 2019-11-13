@@ -59,8 +59,9 @@ body{
   width: 1200px;
   margin: auto;
   background-color: rgb(240, 240, 240);
-  height: 1000px;
+  /* height: 1000px; */
   border-radius:8px;
+  padding-bottom:100px ;
 }
 .w{
   width: 1200px;

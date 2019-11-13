@@ -2,66 +2,196 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>坏网</title>
     <link rel="icon" href="img/title.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/software.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/software.css" />
 </head>
+<style>
+    #map {
+        width: 100px;
+        height: 100px;
+    }
+
+    p {
+        color: #666666;
+        font-size: 24px;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: "幼圆";
+        margin-top: 18px;
+    }
+
+    #content #sw a {
+        margin-left: 40px;
+        line-height: 40px;
+        font-size: 20px;
+        color: #8d8d8d;
+    }
+    #content #sw .ten{
+        margin-left: 20px;
+    }
+</style>
 
 <body>
     <!-- header -->
     <div id="header">
-
-    </div>
-    <!-- nav -->
-    <div id="nav" class="w clearfix">
-        <div class="clearfix">
-            <div id="logo">
-                <img src="img/logo.png" alt="">
+        <div class="w  clearfix">
+            <div id="log">
+                <a href="#"><span>登录</span></a>
             </div>
-            <div class="date"></div>
-            <div class="nav">
-                <ul>
-                    <li>
-                        <a href="index.html">首&nbsp;&nbsp;页</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="dontknow.html">不懂的知识</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="sofeware.html">软&nbsp;&nbsp;件</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="#">视&nbsp;&nbsp;频</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li style="margin-right: 60px;">
-                        <a href="#">图&nbsp;&nbsp;片</a>
-                        <div class="navline"></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="line"></div>
-    </div>
-
-    <div id="sw">
-        <div class="content">
-            <a href="http://hs.dllcm.com/">黑鲨装机软件</a><br>
-            <a href="https://www.jb51.net/softs/140818.html">win10 / kms一键激活工具</a>
+            <div id="date"></div>
+            <div id="place">所处位置：</div>
+            <div id="allmap"></div>
         </div>
     </div>
+    <div id="back">
+        <!-- nav -->
+        <div id="nav" class="w clearfix">
+            <div class="clearfix">
+                <div id="logo">
+                    <img src="img/logo.png" alt="" />
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="index.html">首&nbsp;&nbsp;页</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="dontknow.html">不懂的知识</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="sofeware.html">实&nbsp;&nbsp;用</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="#">视&nbsp;&nbsp;频</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li style="margin-right: 60px;">
+                            <a href="#">图&nbsp;&nbsp;片</a>
+                            <div class="navline"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
 
+        <!-- content -->
+        <div id="content">
+            <div id="sw">
+                <div class="content">
+                    <p>(1) 黑鲨装机软件</p>
+                    <a href="http://hs.dllcm.com/">[https://hs.dllcm.com/]</a><br>
+                    <p>(2) win10 / kms一键激活工具</p>
+                    <a href="https://www.jb51.net/softs/140818.html">[https://www.jb51.net/softs/140818.html]</a><br>
+                    <p>(3) 本期的10个良心网站推荐：</p><br>
+                    <div class="ten">
+                        <p> 1.VideoFK：在线视频抓取下载工具 </p>
+                        <a href="https://www.videofk.com">[https://www.videofk.com/]</a><br>
+                        <p> 2.RRYSJ：人工智能字幕听译工具 </p>
+                        <a href="http://www.1sj.tv">[http://www.1sj.tv/]</a><br>
+                        <p> 3.全历史：历史内容聚合网站</p>
+                        <a href="https://www.allhistory.com"> [https://www.allhistory.com/]</a><br>
+                        <p> 4.设计师专属字体下载 +字体识别工具 +字体商用查询</p>
+                        <a href="http://www.hellofont.cn">[http://www.hellofont.cn/]</a><br>
+                        <a href="http://www.qiuziti.com"> [http://www.qiuziti.com/]</a> <br>
+                        <a href="http://fonts.safe.360.cn"> [http://fonts.safe.360.cn/]</a> <br>
+                        <p> 5.【已删除】</p>
+                        <p> 6.UzerMe云端办公工具</p>
+                        <a href="https://www.uzer.me"> [https://www.uzer.me/]</a><br>
+                        <p> 7.SoBooks 强大的电子书资源网站</p>
+                        <a href="https://sobooks.cc">[https://sobooks.cc/]</a><br>
+                        <p> 8.搞定设计 人工智能在线抠图工具</p>
+                        <a href="https://www.gaoding.com"> [http://www.aigei.com/]</a><br>
+                        <p> 9.一键式设计工具+智能抠图</p>
+                        <a href="https://www.gaoding.com">[https://www.gaoding.com/]</a><br>
+                        <p> 10.虫部落 重度网络资源藏家社区</p>
+                        <a href="https://www.chongbuluo.com"> [https://www.chongbuluo.com/]</a><br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/getscript?v=3.0&ak=AZ1nBCMKxKOM3xxMvYlcgSGtcXScvoUb"></script>
+<script>
+    //头部时间
+    var oSpan = document.createElement("span");
+    var date = document.getElementById("date");
+    var aa = date.appendChild(oSpan);
+    var time = function () {
+        var myDate = new Date();
+        var y = myDate.getFullYear();
+        var m = myDate.getMonth() + 1;
+        var d = myDate.getDate();
+        var h = myDate.getHours();
+        var minu = myDate.getMinutes();
+        var s = myDate.getSeconds();
+        oSpan.innerHTML =
+            y + "/" + m + "/" + d + "/" + h + ":" + towNum(minu) + ":" + towNum(s);
+    };
+    function towNum(n) {
+        return n > 9 ? n : "0" + n;
+    }
+    time();
+    setInterval(time, 1000);
+
+    //地理位置
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(116.331398, 39.897445);
+    map.centerAndZoom(point, 14);
+    var myGeo = new BMap.Geocoder();
+    var geolocation = new BMap.Geolocation();
+    var pspan = document.createElement("span");
+    var place = document.getElementById("place");
+    var bb = place.append(pspan);
+
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+            myGeo.getLocation(
+                new BMap.Point(
+                    r.point.lng - 0.0171511254,
+                    r.point.lat + 0.0933886225
+                ),
+                function (result) {
+                    if (result) {
+                        pspan.innerHTML =
+                            result.addressComponents.province +
+                            "/" +
+                            result.addressComponents.city
+
+                    }
+                }
+            );
+
+            //     alert("您的位置：" + (r.point.lng-0.0171511254) + "," + (r.point.lat+0.0813886225));
+            //   } else {
+            //     alert("failed" + this.getStatus());
+            //   }
+
+        }
+    });
+</script>
+
+<script type="text/javascript"
+    src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
 
 </html>

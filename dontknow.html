@@ -2,77 +2,168 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>不懂的知识</title>
-     <link rel="stylesheet" href="css/dontknow.css">
-    <link rel="stylesheet" href="css/reset.css">
-   
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>坏网</title>
+    <link rel="icon" href="img/title.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/dontknow.css">
 </head>
+<style>
+    #map {
+        width: 100px;
+        height: 100px;
+    }
+</style>
 
 <body>
     <!-- header -->
     <div id="header">
-
-    </div>
-    <!-- nav -->
-    <div id="nav" class="w clearfix">
-        <div class="clearfix">
-            <div id="logo">
-                <img src="img/logo.png" alt="">
+        <div class="w  clearfix">
+            <div id="log">
+                <a href="#"><span>登录</span></a>
             </div>
-            <div class="date"></div>
-            <div class="nav">
-                <ul>
-                    <li>
-                        <a href="index.html">首&nbsp;&nbsp;页</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="dontknow.html">不懂的知识</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="sofeware.html">软&nbsp;&nbsp;件</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li>
-                        <a href="#">视&nbsp;&nbsp;频</a>
-                        <div class="navline"></div>
-                    </li>
-                    <li style="margin-right: 60px;">
-                        <a href="#">图&nbsp;&nbsp;片</a>
-                        <div class="navline"></div>
-                    </li>
+            <div id="date"></div>
+            <div id="place">所处位置：</div>
+            <div id="allmap"></div>
+        </div>
+    </div>
+    <div id="back">
+        <!-- nav -->
+        <div id="nav" class="w clearfix">
+            <div class="clearfix">
+                <div id="logo">
+                    <img src="img/logo.png" alt="" />
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li>
+                            <a href="index.html">首&nbsp;&nbsp;页</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="dontknow.html">不懂的知识</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="sofeware.html">软&nbsp;&nbsp;件</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="breakwebGame.html">游&nbsp;&nbsp;戏</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li>
+                            <a href="#">视&nbsp;&nbsp;频</a>
+                            <div class="navline"></div>
+                        </li>
+                        <li style="margin-right: 60px;">
+                            <a href="#">图&nbsp;&nbsp;片</a>
+                            <div class="navline"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
 
-                </ul>
+        <!-- content -->
+        <div id="dk" class="w">
+            <div class="content">
+                <a href="http://javascript.ruanyifeng.com/grammar/array.html#toc6">1.类似数组的对象</a><br>
+                <a href="http://javascript.ruanyifeng.com/grammar/conversion.html">2.对象数据类型转换</a><br>
+                <a href="#">3.width语句</a><br>
+                <a href="http://javascript.ruanyifeng.com/grammar/function.html">4.全局作用域和函数作用域.闭包</a><br>
+                <span>闭包的最大用处有两个，一个是可以读取函数内部的变量，另一个就是让这些变量始终保持在内存中，即闭包可以使得它诞生环境一直存在。闭包的另一个用处，是封装对象的私有属性和私有方法。</span><br>
+                <a href="http://javascript.ruanyifeng.com/grammar/function.html">5.立即调用的函数表达式（IIFE）,eval命令</a><br>
+                <a href="http://javascript.ruanyifeng.com/grammar/operator.html#toc19">6.函数表达式中的私有变量</a><br>
+                <a href="#">7.垃圾收集</a><br>
+                <a href="#">8.对象模型/对象</a><br>
+                <span>三大模式：工厂模式、构造函数模式、原型模式</span><br>
+                <a href="#">9.element类型</a><br>
+                <!-- <a href="#">事件中的一部分</a> -->
+                <a href="#">10.对象成员总结</a><br>
+                <span> 总结一下，您应该基本了解了以下三种属性或者方法：<br></span>
+                <span>那些定义在构造器函数中的、用于给予对象实例的。这些都很容易发现 - 在您自己的代码中，它们是构造函数中使用this.x =
+                    x类型的行；在内置的浏览器代码中，它们是可用于对象实例的成员（通常通过使用new关键字调用构造函数来创建，例如var myInstance = new
+                    myConstructor()）。<br></span>
+                <span>那些直接在构造函数上定义、仅在构造函数上可用的。这些通常仅在内置的浏览器对象中可用，并通过被直接链接到构造函数而不是实例来识别。 例如Object.keys()。</span> <br>
+                <span>那些在构造函数原型上定义、由所有实例和对象类继承的。这些包括在构造函数的原型属性上定义的任何成员，如myConstructor.prototype.x()。</span> <br>
+               
+
             </div>
         </div>
-        <div class="line"></div>
-    </div>
 
-    <!-- content -->
-    <div id="dk" class="w">
-        <div class="content">
-            <a href="http://javascript.ruanyifeng.com/grammar/array.html#toc6">1.类似数组的对象</a><br>
-            <a href="http://javascript.ruanyifeng.com/grammar/conversion.html">2.对象数据类型转换</a><br>
-            <a href="#">3.width语句</a><br>
-            <a href="http://javascript.ruanyifeng.com/grammar/function.html">4.全局作用域和函数作用域.闭包</a><br>
-            <span>闭包的最大用处有两个，一个是可以读取函数内部的变量，另一个就是让这些变量始终保持在内存中，即闭包可以使得它诞生环境一直存在。闭包的另一个用处，是封装对象的私有属性和私有方法。</span><br>
-            <a href="http://javascript.ruanyifeng.com/grammar/function.html">5.立即调用的函数表达式（IIFE）,eval命令</a><br>
-            <a href="http://javascript.ruanyifeng.com/grammar/operator.html#toc19">6.函数表达式中的私有变量</a><br>
-            <a href="#">7.垃圾收集</a><br>
-            <a href="#">8.对象模型/对象</a><br>
-            <span>三大模式：工厂模式、构造函数模式、原型模式</span>
-            <a href="#">element类型</a>
-            <a href="#">事件中的一部分</a>
-        </div>
 
 </body>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/getscript?v=3.0&ak=AZ1nBCMKxKOM3xxMvYlcgSGtcXScvoUb"></script>
+<script>
+    //头部时间
+    var oSpan = document.createElement("span");
+    var date = document.getElementById("date");
+    var aa = date.appendChild(oSpan);
+    var time = function () {
+        var myDate = new Date();
+        var y = myDate.getFullYear();
+        var m = myDate.getMonth() + 1;
+        var d = myDate.getDate();
+        var h = myDate.getHours();
+        var minu = myDate.getMinutes();
+        var s = myDate.getSeconds();
+        oSpan.innerHTML =
+            y + "/" + m + "/" + d + "/" + h + ":" + towNum(minu) + ":" + towNum(s);
+    };
+    function towNum(n) {
+        return n > 9 ? n : "0" + n;
+    }
+    time();
+    setInterval(time, 1000);
+
+    //地理位置
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(116.331398, 39.897445);
+    map.centerAndZoom(point, 14);
+    var myGeo = new BMap.Geocoder();
+    var geolocation = new BMap.Geolocation();
+    var pspan = document.createElement("span");
+    var place = document.getElementById("place");
+    var bb = place.append(pspan);
+
+    geolocation.getCurrentPosition(function (r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+            myGeo.getLocation(
+                new BMap.Point(
+                    r.point.lng - 0.0171511254,
+                    r.point.lat + 0.0933886225
+                ),
+                function (result) {
+                    if (result) {
+                        pspan.innerHTML =
+                            result.addressComponents.province +
+                            "/" +
+                            result.addressComponents.city
+
+                    }
+                }
+            );
+
+            //     alert("您的位置：" + (r.point.lng-0.0171511254) + "," + (r.point.lat+0.0813886225));
+            //   } else {
+            //     alert("failed" + this.getStatus());
+            //   }
+
+        }
+    });
+</script>
+
+<script type="text/javascript"
+    src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
 
 </html>
