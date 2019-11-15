@@ -47,7 +47,7 @@
                             <div class="navline"></div>
                         </li>
                         <li>
-                            <a href="sofeware.html">软&nbsp;&nbsp;件</a>
+                            <a href="sofeware.html">实&nbsp;&nbsp;用</a>
                             <div class="navline"></div>
                         </li>
                         <li>
@@ -83,7 +83,10 @@
                 <span>三大模式：工厂模式、构造函数模式、原型模式</span><br>
                 <a href="#">9.element类型</a><br>
                 <!-- <a href="#">事件中的一部分</a> -->
-                <a href="#">10.对象成员总结</a><br>
+
+                <a href="#">Promise异步调用</a>
+
+                <a href="#">对象成员总结</a><br>
                 <span> 总结一下，您应该基本了解了以下三种属性或者方法：<br></span>
                 <span>那些定义在构造器函数中的、用于给予对象实例的。这些都很容易发现 - 在您自己的代码中，它们是构造函数中使用this.x =
                     x类型的行；在内置的浏览器代码中，它们是可用于对象实例的成员（通常通过使用new关键字调用构造函数来创建，例如var myInstance = new
@@ -97,8 +100,8 @@
 
 
 </body>
-<script type="text/javascript"
-    src="http://api.map.baidu.com/getscript?v=3.0&ak=AZ1nBCMKxKOM3xxMvYlcgSGtcXScvoUb"></script>
+<!-- <script type="text/javascript"
+    src="http://api.map.baidu.com/getscript?v=3.0&ak=AZ1nBCMKxKOM3xxMvYlcgSGtcXScvoUb"></script> -->
 <script>
     //头部时间
     var oSpan = document.createElement("span");
@@ -118,10 +121,14 @@
     function towNum(n) {
         return n > 9 ? n : "0" + n;
     }
-    time();
-    setInterval(time, 1000);
+    // time();
+    // setInterval(time, 1000);
+    setTimeout(function run(){
+        time();
+        setTimeout(run,1000);
+    },0)
 
-    //地理位置
+    地理位置
     var map = new BMap.Map("allmap");
     var point = new BMap.Point(116.331398, 39.897445);
     map.centerAndZoom(point, 14);
@@ -152,18 +159,15 @@
                 }
             );
 
-            //     alert("您的位置：" + (r.point.lng-0.0171511254) + "," + (r.point.lat+0.0813886225));
-            //   } else {
-            //     alert("failed" + this.getStatus());
-            //   }
+            
 
         }
     });
 </script>
 
-<script type="text/javascript"
+<!-- <script type="text/javascript"
     src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
 <script type="text/javascript"
-    src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script>
+    src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script> -->
 
 </html>
