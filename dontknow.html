@@ -25,7 +25,7 @@
                 <a href="#"><span>登录</span></a>
             </div>
             <div id="date"></div>
-            <div id="place">所处位置：</div>
+            <!-- <div id="place">所处位置：</div> -->
             <div id="allmap"></div>
         </div>
     </div>
@@ -129,44 +129,44 @@
     },0)
 
     //地理位置
-    var map = new BMap.Map("allmap");
-    var point = new BMap.Point(116.331398, 39.897445);
-    map.centerAndZoom(point, 14);
-    var myGeo = new BMap.Geocoder();
-    var geolocation = new BMap.Geolocation();
-    var pspan = document.createElement("span");
-    var place = document.getElementById("place");
-    var bb = place.append(pspan);
+    // var map = new BMap.Map("allmap");
+    // var point = new BMap.Point(116.331398, 39.897445);
+    // map.centerAndZoom(point, 14);
+    // var myGeo = new BMap.Geocoder();
+    // var geolocation = new BMap.Geolocation();
+    // var pspan = document.createElement("span");
+    // var place = document.getElementById("place");
+    // var bb = place.append(pspan);
 
-    geolocation.getCurrentPosition(function (r) {
-        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
-            var mk = new BMap.Marker(r.point);
-            map.addOverlay(mk);
-            map.panTo(r.point);
-            myGeo.getLocation(
-                new BMap.Point(
-                    r.point.lng - 0.0171511254,
-                    r.point.lat + 0.0933886225
-                ),
-                function (result) {
-                    if (result) {
-                        pspan.innerHTML =
-                            result.addressComponents.province +
-                            "/" +
-                            result.addressComponents.city
+    // geolocation.getCurrentPosition(function (r) {
+    //     if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+    //         var mk = new BMap.Marker(r.point);
+    //         map.addOverlay(mk);
+    //         map.panTo(r.point);
+    //         myGeo.getLocation(
+    //             new BMap.Point(
+    //                 r.point.lng - 0.0171511254,
+    //                 r.point.lat + 0.0933886225
+    //             ),
+    //             function (result) {
+    //                 if (result) {
+    //                     pspan.innerHTML =
+    //                         result.addressComponents.province +
+    //                         "/" +
+    //                         result.addressComponents.city
 
-                    }
-                }
-            );
+    //                 }
+    //             }
+    //         );
 
             
 
-        }
-    });
+    //     }
+    // });
 </script>
 
-<script type="text/javascript"
-    src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+<!-- <script type="text/javascript"
+    src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script> -->
 <!-- <script type="text/javascript"
     src="http://api.map.baidu.com/library/SearchInfoWindow/1.4/src/SearchInfoWindow_min.js"></script> -->
 
